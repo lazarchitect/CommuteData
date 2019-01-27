@@ -16,15 +16,18 @@ def weekdayAsString(weekdayasInt):
 while x < 1000:
     driver = webdriver.Chrome()
     driver.get(URL)
-    
-    elem = driver.find_element_by_tag_name("body")
+
+    elem = driver.find_element_by_id("section-directions-trip-0")
+
+    print(elem.text)
+
     textArray = elem.text.split("\n")
 
     print(textArray)
     
-    duration = textArray[4]
-    route = textArray[6]
-    mileage = textArray[5]
+    duration = textArray[0]
+    route = textArray[2]
+    mileage = textArray[1]
     
     time = str(datetime.today())
     
@@ -33,5 +36,5 @@ while x < 1000:
 
     driver.close()    
     
-    sleep(300)
+    sleep(30)
     x+=1
